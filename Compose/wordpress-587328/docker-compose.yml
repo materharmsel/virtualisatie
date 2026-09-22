@@ -1,0 +1,33 @@
+# Maarten ter Harmsel
+# Studentnummer: 587328
+# Week 5 - Docker Compose: webapplicatie van meerdere containers (WordPress + MySQL)
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: db-587328
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root-587328
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress-587328
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress-587328
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress-587328
+      WORDPRESS_DB_NAME: wordpress
+
+volumes:
+  db_data:
