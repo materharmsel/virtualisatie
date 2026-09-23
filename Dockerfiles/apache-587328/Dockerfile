@@ -4,7 +4,9 @@
 
 FROM ubuntu:24.04
 
-RUN apt-get update && apt-get install -y apache2 && rm -rf /var/lib/apt/lists/*
+LABEL maintainer="Maarten ter Harmsel 587328"
+
+RUN apt-get update && apt-get install -y apache2
 
 COPY index.html /var/www/html/index.html
 
