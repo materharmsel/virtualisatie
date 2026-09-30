@@ -28,6 +28,8 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress-587328
       WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wp_data:/var/www/html
     networks:
       - net-587328
 
@@ -45,6 +47,7 @@ services:
 
 volumes:
   db_data:
+  wp_data:
 
 networks:
   net-587328:
