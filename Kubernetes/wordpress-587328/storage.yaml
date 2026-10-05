@@ -1,0 +1,78 @@
+# Maarten ter Harmsel
+# Studentnummer: 587328
+# Week 6 - Persistente storage: PersistentVolume (PV) + PersistentVolumeClaim (PVC)
+# De map staat op node "minikube". Minikube bewaart /data ook na "minikube stop".
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv-587328
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/mysql-587328"
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - minikube
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: wordpress-pv-587328
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/wordpress-587328"
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - minikube
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc-587328
+spec:
+  storageClassName: manual
+  volumeName: mysql-pv-587328
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wordpress-pvc-587328
+spec:
+  storageClassName: manual
+  volumeName: wordpress-pv-587328
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
