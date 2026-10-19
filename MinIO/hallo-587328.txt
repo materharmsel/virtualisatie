@@ -1,0 +1,2 @@
+Hallo van Maarten ter Harmsel, studentnummer 587328.
+Dit object staat in MinIO, in bucket 587328.
