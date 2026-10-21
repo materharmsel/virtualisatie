@@ -1,7 +1,6 @@
 # Maarten ter Harmsel
 # Studentnummer: 587328
 # Week 7 - SAN, stap 2: netwerk, iSCSI Target Server, LUN, en NFS/SMB uit
-# Gemaakt met hulp van Claude (Anthropic), 19-20 oktober 2026
 # Draaien op: SXN-SAN-587328, als Administrator
 #
 # De SAN deelt opslag als blokken via iSCSI (target).

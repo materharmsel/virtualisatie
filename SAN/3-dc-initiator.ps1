@@ -1,7 +1,6 @@
 # Maarten ter Harmsel
 # Studentnummer: 587328
 # Week 7 - SAN, stap 3: iSCSI Initiator op SXN-DC-01, schijf S: en een bestand opslaan
-# Gemaakt met hulp van Claude (Anthropic), 19-20 oktober 2026
 # Draaien op: SXN-DC-01, als Administrator
 
 $SanIP = "10.21.2.110"
